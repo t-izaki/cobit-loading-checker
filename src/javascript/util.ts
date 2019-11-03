@@ -11,7 +11,7 @@ export const sleep = (waitSeconds: number): Promise<void> => {
 export const getIsEnabled = (): Promise<boolean> => {
   return new Promise<boolean>((resolve: any): void => {
     chrome.storage.sync.get((result: { [key: string]: boolean }): void => {
-      resolve(result.isEnabled)
+      resolve(result.isEnabled === undefined ? true : result.isEnabled)
     })
   })
 }
