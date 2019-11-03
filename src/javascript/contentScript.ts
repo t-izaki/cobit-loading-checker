@@ -2,6 +2,12 @@
 import { LOADING_CHECK_INTERVAL_SECOND } from './const'
 import { sleep, getIsEnabled } from './util'
 
+const notify = async (): Promise<void> => {
+  // getURLの引数は、distフォルダでの相対パスを指定している
+  const myAudio = new Audio(chrome.runtime.getURL('finish.mp3'))
+  myAudio.play()
+}
+
 const checkIsLoading = (): boolean => {
   const loadingElement = document.querySelector('div[class^="circleLoader"]')
 
@@ -24,9 +30,7 @@ const notifyWhenFinishLoading = async (): Promise<void> => {
 
     newIsLoading = checkIsLoading()
     if (isEnabled && isFinishLoading(isLoading, newIsLoading)) {
-      // getURLの引数は、distフォルダでの相対パスを指定している
-      const myAudio = new Audio(chrome.runtime.getURL('finish.mp3'))
-      myAudio.play()
+      await notify()
     }
     isLoading = newIsLoading
   }
