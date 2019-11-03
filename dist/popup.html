@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .container {
+        width: 220px;
+        padding: 8px 8px 16px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #252348;
+        font-size: 16px;
+      }
+
+      p {
+        color: #666666;
+      }
+
+      .select-wrapper {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        border: 2px solid #252348;
+        border-radius: 50px;
+        background: #ffffff;
+      }
+
+      select {
+        width: 100%;
+        height: 28px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 8px 38px 8px 8px;
+        color: #252348;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>cobit Loading Checker</h1>
+      <p>cobit編集画面でローディングが完了したときに、音がなります。</p>
+      <div class="select-wrapper">
+        <select id="js-isEnabled">
+          <option value="true">有効</option>
+          <option value="false">無効</option>
+        </select>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "cobit loading checker",
+  "version": "1.0",
+  "description": "",
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://cobit.biztex.co.jp/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "finish.mp3"
+  ],
+  "manifest_version": 2
+}
