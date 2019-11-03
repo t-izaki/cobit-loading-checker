@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 
-export const sleep = (waitSeconds: number) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
+export const sleep = (waitSeconds: number): Promise<void> => {
+  return new Promise((resolve: any): void => {
+    setTimeout((): void => {
       resolve()
     }, waitSeconds * 1000)
   })
