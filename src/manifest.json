@@ -1,0 +1,10 @@
+{
+  "name": "cobit loading checker",
+  "version": "1.0",
+  "description": "",
+  "permissions": [],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2
+}
