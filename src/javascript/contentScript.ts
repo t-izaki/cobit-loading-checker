@@ -1,5 +1,6 @@
+/* eslint-disable no-await-in-loop */
 import { LOADING_CHECK_INTERVAL_SECOND } from './const'
-import { sleep } from './util'
+import { sleep, getIsEnabled } from './util'
 
 const checkIsLoading = (): boolean => {
   const loadingElement = document.querySelector('div[class^="circleLoader"]')
@@ -12,16 +13,17 @@ const isFinishLoading = (oldIsLoading: boolean, newIsLoading: boolean): boolean 
 }
 
 const notifyWhenFinishLoading = async (): Promise<void> => {
+  let isEnabled
   let newIsLoading
   let isLoading = false
 
-  // eslint-disable-next-line no-constant-condition
   while (true) {
-    // eslint-disable-next-line no-await-in-loop
+    isEnabled = await getIsEnabled()
+
     await sleep(LOADING_CHECK_INTERVAL_SECOND)
 
     newIsLoading = checkIsLoading()
-    if (isFinishLoading(isLoading, newIsLoading)) {
+    if (isEnabled && isFinishLoading(isLoading, newIsLoading)) {
       // getURLの引数は、distフォルダでの相対パスを指定している
       const myAudio = new Audio(chrome.runtime.getURL('finish.mp3'))
       myAudio.play()
@@ -30,6 +32,6 @@ const notifyWhenFinishLoading = async (): Promise<void> => {
   }
 }
 ;(async (): Promise<void> => {
-  console.log('cobit loading checker is enabled')
+  console.log(`cobit Loading Checker is installed`)
   await notifyWhenFinishLoading()
 })()
