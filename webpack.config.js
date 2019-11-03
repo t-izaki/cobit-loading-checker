@@ -3,8 +3,8 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    background: './src/javascript/app.ts',
-    popup: './src/javascript/popup.ts'
+    popup: './src/javascript/popup.ts',
+    contentScript: './src/javascript/contentScript.ts'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -40,7 +40,7 @@ module.exports = {
     ]),
     new CopyPlugin([
       {
-        from: 'src/image',
+        from: 'src/audio',
         to: ''
       }
     ])
